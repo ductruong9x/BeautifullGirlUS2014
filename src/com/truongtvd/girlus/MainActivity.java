@@ -34,8 +34,9 @@ import com.facebook.Session;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.WebDialog;
 import com.facebook.widget.WebDialog.OnCompleteListener;
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.truongtvd.girl.adapter.DetailAdapter;
 import com.truongtvd.girl.model.ItemNewFeed;
 import com.truongtvd.girlus.network.NetworkOperator;
@@ -66,7 +67,9 @@ public class MainActivity extends SherlockActivity {
 		btnInvate = (ImageButton) findViewById(R.id.btnInvate);
 		loading = (ProgressBar) findViewById(R.id.loading);
 		adView = (AdView) findViewById(R.id.adFragment);
-		adView.loadAd(new AdRequest());
+//		adView.setAdSize(AdSize.SMART_BANNER);
+//		adView.setAdUnitId("ca-app-pub-6063844612770322/5548295694");
+		adView.loadAd(new AdRequest.Builder().build());
 		getIDUser();
 		btnInvate.setOnClickListener(new OnClickListener() {
 
@@ -216,7 +219,7 @@ public class MainActivity extends SherlockActivity {
 			public void onErrorResponse(VolleyError error, String extraData) {
 				// TODO Auto-generated method stub
 				loading.setVisibility(View.GONE);
-				MyApplication.showToast(MainActivity.this, "Error");
+				MyApplication.showToast(MainActivity.this, "f you can not download content. Please go to the Play Store to update the latest version");
 				error.printStackTrace();
 			}
 		};
